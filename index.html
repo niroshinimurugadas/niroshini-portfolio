@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,14 +10,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
-
     :root {
-      --accent-color: #9c27b0; /* soft purple */
+      --accent-color: #9c27b0;
     }
 
+    /* ===== GLOBAL RESET ===== */
     html {
-  scroll-behavior: smooth;
-}
+      scroll-behavior: smooth;
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -28,6 +30,144 @@
       background-color: #fff;
       color: #111;
     }
+
+    /* ===== GLOBAL LAYOUT SYSTEM ===== */
+
+    .container {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section {
+      padding: 100px 0;
+    }
+
+    /* ===== social-icons ===== */
+    .social-icons {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .btn {
+      display: inline-block;
+    }
+
+    .social-icons {
+      width: fit-content;
+      margin-top: 25px;
+    }
+
+    .social-icons a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #f2f2f2;
+      transition: 0.3s ease;
+    }
+
+    .social-icons img {
+      width: 20px;
+      height: 20px;
+      object-fit: contain;
+    }
+
+    .social-icons a {
+      transition: 0.3s;
+    }
+
+
+    .social-icons a:hover {
+      background: #9c27b0;
+      transform: translateY(-4px);
+    }
+
+    .cta-section {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    .typing {
+      width: 0;
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 2px solid #8e2de2;
+      animation: typing 3s steps(40, end) forwards, blink 0.8s infinite;
+    }
+
+    /* ===== typing animation ===== */
+    @keyframes typing {
+      to {
+        width: 100%;
+      }
+    }
+
+    @keyframes blink {
+      50% {
+        border-color: transparent;
+      }
+    }
+
+    /* ===== HERO SECTION FIXED ===== */
+
+    .hero {
+      min-height: calc(100vh - 80px);
+      /* adjust if header height changes */
+      display: flex;
+      align-items: center;
+    }
+
+    .hero .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      /* keeps everything left aligned */
+    }
+
+    .hero-right {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-right img {
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #616161;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    /* CSS for Hero/General sections previously here moved to consolidated media queries at bottom */
+
+    /* ===== moblie-view ===== */
+    .social-icons {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+      justify-content: center;
+      /* Always center */
+    }
+
+    /* Social icons media query moved to bottom */
+
+
+    /* ===== HEADER ===== */
 
     header {
       display: flex;
@@ -44,7 +184,6 @@
     header .logo {
       font-size: 24px;
       font-weight: 700;
-      color: #111;
     }
 
     header nav a {
@@ -52,31 +191,38 @@
       text-decoration: none;
       color: #111;
       font-weight: 500;
-      transition: color 0.3s;
+      transition: 0.3s;
     }
 
-    header nav a:hover {
-      color: var(--accent-color); /* theme accent */
-    }
-
+    header nav a:hover,
     header nav a.active {
       color: var(--accent-color);
-      font-weight: 700;
     }
 
-    /* HERO SECTION */
+    /* Header Navigation logic moved to consolidated media queries */
+    .menu-btn {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: #111;
+    }
+
+    #menu-toggle {
+      display: none;
+    }
+
+
+    /* ===== HERO ===== */
+
     .hero {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 100px 50px;
       flex-wrap: wrap;
     }
 
     .hero-left {
       max-width: 600px;
-      /* push intro a bit away from the left edge */
-      margin-left: 20px;
     }
 
     .hero-left h1 {
@@ -94,7 +240,7 @@
       color: #555;
     }
 
-    .hero-left .btn {
+    .btn {
       display: inline-block;
       padding: 12px 30px;
       background-color: var(--accent-color);
@@ -102,569 +248,652 @@
       border-radius: 30px;
       text-decoration: none;
       font-weight: 500;
-      transition: background 0.3s, transform 0.3s;
-      margin-top: 15px;
+      transition: 0.3s;
     }
 
-    .hero-left .btn:hover {
-      background-color: #be97be;
+    .btn:hover {
       transform: translateY(-2px);
     }
 
-    .hero-left .social-icons {
-      margin-top: 25px;
-      display: flex;
+    .hero-right img {
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #616161;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Hero Mobile view moved to consolidated media queries */
+
+    /* ===== SECTION TITLES ===== */
+
+    .section-title {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--accent-color);
+      margin-bottom: 25px;
+      position: relative;
+      display: inline-block;
+      padding-bottom: 10px;
+    }
+
+    .section-title::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, #9c27b0, #d946ef);
+      border-radius: 10px;
+    }
+
+    /* ===== ABOUT ===== */
+
+    #about {
+      background: linear-gradient(180deg, #f7f7f7 0%, #ffffff 100%);
+    }
+
+    .about-text {
+      font-size: 19px;
+      line-height: 1.9;
+      color: #444;
+      max-width: 900px;
+    }
+
+    .about-highlights {
+      margin-top: 30px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 15px;
+      font-size: 17px;
     }
 
-    .hero-left .social-icons a img {
-      width: 35px;
-      height: 35px;
-      transition: transform 0.3s, box-shadow 0.3s;
+    /* ===== SKILLS ===== */
+
+    .skill-bar {
+      width: 100%;
+      max-width: 600px;
+      margin-bottom: 25px;
     }
 
-    .hero-left .social-icons a {
+    .skill-top {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    .bar {
+      width: 100%;
+      height: 8px;
+      background: #e0e0e0;
+      border-radius: 5px;
+      overflow: hidden;
+      display: block;
+    }
+
+    .fill {
+      height: 100%;
+      background: #9c27b0;
+      border-radius: 5px;
+    }
+
+    /* ===== EXPERIENCE ===== */
+
+    #experience {
+      background: #f7f7f7;
+    }
+
+    .experience-item {
+      margin-bottom: 50px;
+    }
+
+    .experience-role {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .experience-company {
+      color: #616161;
+    }
+
+    .experience-period {
+      color: #999;
+      margin-bottom: 10px;
+    }
+
+    .experience-details {
+      line-height: 1.6;
+      color: #555;
+    }
+
+    /* ===== PROJECTS ===== */
+
+    .project-item {
+      margin-bottom: 50px;
+      padding: 25px;
+      border: 1px solid #eee;
+      border-radius: 12px;
+      background: #fafafa;
+    }
+
+    .project-title {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .project-tech {
+      color: #616161;
+      margin-bottom: 10px;
+    }
+
+    .project-details {
+      line-height: 1.6;
+      color: #555;
+    }
+
+    /* ===== EDUCATION ===== */
+
+    #education {
+      background: #f3f3f3;
+    }
+
+    /* Section spacing */
+    #education {
+      padding: 80px 0;
+      background: #f9f9f9;
+    }
+
+    /* Timeline layout */
+    .timeline {
+      position: relative;
+      margin-top: 40px;
+    }
+
+    /* Vertical line */
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 45%;
+      top: 0;
+      width: 3px;
+      height: 100%;
+      background: #5a585c;
+      transform: translateX(-50%);
+    }
+
+    /* Each item */
+    .timeline-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 60px;
       position: relative;
     }
 
-    .hero-left .social-icons a:hover img {
-      transform: scale(1.1) translateY(-5px);
-      box-shadow: 0 0 8px var(--accent-color);
-      filter: brightness(1.2);
+    /* Left & Right */
+    .timeline-left,
+    .timeline-right {
+      width: 45%;
     }
 
-    /* Tooltip - Removed text display, keeping hover effects */
-    .hero-left .social-icons a::after {
-      content: "";
-      display: none;
+    .timeline-right {
+      width: 50%;
     }
 
-    .hero-left .social-icons a::before {
-      content: "";
-      position: absolute;
-      bottom: 100%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 0;
-      height: 0;
-      border-left: 5px solid transparent;
-      border-right: 5px solid transparent;
-      border-top: 5px solid var(--accent-color);
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s;
-      margin-bottom: 0px;
+    .timeline-left {
+      width: 40%;
+      text-align: right;
+      /* align closer to center */
+      padding-right: 20px;
+      /* small spacing */
     }
 
-    .hero-right img {
-      width: 300px;
-      height: 300px;
-      transform: translateX(-80px); /* shift left rather than using margin */
-      margin-right: 0;
+    /* Make text cleaner */
+    .timeline-left h4 {
+      margin-bottom: 5px;
+    }
+
+    .timeline-left span {
+      font-size: 14px;
+      color: gray;
+    }
+
+    /* Center dot */
+    .timeline-center {
+      position: relative;
+      width: 5%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .dot {
+      background: #5d5b5e;
+      color: white;
+      padding: 5px;
+      margin-left: 10px;
       border-radius: 50%;
-      object-fit: cover;
-      border: 4px solid #616161; /* theme border */
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1), 0 0 10px var(--accent-color, #9c27b0);
-      transition: transform 0.3s, box-shadow 0.3s;
+      font-size: 18px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     }
 
-    /* RESPONSIVE */
+    /* Right card styling */
+    .timeline-right {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      transition: 0.3s;
+    }
+
+    .timeline-right:hover {
+      transform: translateY(-5px);
+    }
+
+    /* ===== RESPONSIVE ===== */
+
+    /* ===== CONSOLIDATED MOBILE VIEW (max-width: 768px) ===== */
     @media (max-width: 768px) {
-      header {
-        padding: 15px 25px; /* reduce header width on phones */
+      section {
+        padding: 60px 0;
       }
 
+      header {
+        padding: 15px 24px;
+      }
+
+      /* Hamburger Menu Logic */
+      .menu-btn {
+        display: block;
+        z-index: 101;
+      }
+
+      header nav {
+        display: none;
+        /* Hide by default on mobile */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: #fff;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 100;
+      }
+
+      header nav a {
+        margin: 15px 0;
+        font-size: 24px;
+        margin-left: 0;
+        /* Override desktop margin */
+      }
+
+      #menu-toggle:checked~nav {
+        display: flex;
+      }
+
+      /* Hero Section */
       .hero {
+        padding-top: 40px;
+      }
+
+      .hero .container {
         flex-direction: column-reverse;
         text-align: center;
-        padding: 60px 30px;
+        gap: 30px;
+        padding: 0 20px;
       }
 
       .hero-left {
+        align-items: center;
         max-width: 100%;
-      }
-
-      .hero-left .social-icons {
-        justify-content: center;
-      }
-
-      /* center the profile image on small screens and remove the left shift */
-      .hero-right {
-        display: flex;
-        justify-content: center;
         width: 100%;
       }
 
+      .hero-left h1 {
+        font-size: 32px;
+        line-height: 1.2;
+      }
+
+      .hero-left p {
+        font-size: 18px;
+        width: 100% !important;
+        /* Ensure typing animation doesn't overflow */
+        white-space: normal;
+        /* Allow wrap if necessary */
+        border-right: none;
+        /* Remove typing cursor on mobile for better fit */
+        animation: none;
+        width: auto;
+      }
+
+      .typing {
+        width: auto;
+        overflow: visible;
+        white-space: normal;
+        border-right: none;
+        animation: none;
+      }
+
+      .hero-right {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+      }
+
       .hero-right img {
+        width: 200px;
+        height: 200px;
+      }
+
+      /* Timeline (Education) */
+      .timeline::before {
+        left: 20px;
+      }
+
+      .timeline-item {
+        flex-direction: column;
+        padding-left: 50px;
         margin-bottom: 40px;
-        transform: translateX(0) !important;
+        width: 100%;
+      }
+
+      .timeline-left,
+      .timeline-right {
+        width: 100%;
+        text-align: left;
+        padding: 0;
+      }
+
+      .timeline-center {
+        position: absolute;
+        left: -10px;
+        top: 0;
+        width: 50px;
+        justify-content: flex-start;
+      }
+
+      .dot {
+        margin-left: 0;
+      }
+
+      .timeline-right {
+        margin-top: 15px;
+        width: 100%;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      }
+
+      /* Social Icons */
+      .social-icons {
+        justify-content: center;
+        width: 100%;
+        flex-wrap: wrap;
+      }
+
+      /* Global Fixes */
+      body {
+        overflow-x: hidden;
       }
     }
-
-    /* Larger screen adjustments */
-    @media (min-width: 769px) {
-      .hero-right img {
-        width: 270px;
-        height: 270px;
-      }
-      .hero-right img:hover {
-        transform: scale(1.05);
-        box-shadow: 0 6px 20px rgba(0,0,0,0.15), 0 0 12px var(--accent-color);
-      }
-      /* disable hover animation for specific profile image */
-      .hero-right img[src$="profile1.jpeg"]:hover {
-        /* preserve the original translateX so the image doesn't shift */
-        transform: translateX(-80px) !important;
-        box-shadow: none !important;
-      }
-    }
-
-    /* constrain wide containers */
-    .hero,
-    #about,
-    #skills,
-    #education,
-    #experience,
-    #projects {
-      max-width: 1200px;
-      margin: auto;
-    }
-
-    /* Medium screens: remove large left shift so image doesn't overlap text */
-    @media (max-width: 1100px) {
-      .hero-right img {
-        transform: translateX(0) !important;
-        margin-right: 0;
-        /* slightly reduce size to avoid overlap */
-        width: 220px;
-        height: 220px;
-      }
-
-      /* ensure profile1 doesn't shift on hover at medium widths */
-      .hero-right img[src$="profile1.jpeg"]:hover {
-        transform: translateX(0) !important;
-        box-shadow: none !important;
-      }
-
-      /* give hero-left more room on medium screens */
-      .hero-left {
-        max-width: 55%;
-      }
-    }
-
-    /* About Section */
-#about {
-  min-height: auto; /* allow height to grow naturally */
-  padding: 80px 60px;
-  background: #f7f7f7;
-  background: linear-gradient(180deg, #f7f7f7 0%, #ffffff 100%);
-}
-
-.section-title {
-  font-size: 32px;
-  font-weight: bold;
-  color: #0f1414;  /* theme color */
-  margin-bottom: 20px;
-}
-
-.about-text {
-  font-size: 19px;
-  line-height: 1.9;
-  color: #444;
-}
-
-.about-container {
-  max-width: 900px;
-}
-
-.about-highlights {
-  margin-top: 30px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 15px;
-  font-size: 17px;
-  color: #333;
-}
-
-
-/* Skills Section */
-#skills {
-  padding: 80px 60px;
-  background: #f7f7f7; /* same as about section */
-  margin-top: 0px;
-}
-
-.skills-intro {
-  font-size: 18px;
-  color: #555;
-  margin-bottom: 50px;
-  max-width: 700px;
-  line-height: 1.7;
-}
-
-.skills-category {
-  margin-bottom: 45px;
-}
-
-.category-title {
-  font-size: 20px;
-  font-weight: 600;
-  color: #0f1414;
-  margin-bottom: 20px;
-  padding-bottom: 10px;
-  border-bottom: 2px solid #616161;
-  display: inline-block;
-}
-
-.skills-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.skill {
-  padding: 10px 18px;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  color: #0f1414;
-  background: #f0f0f0;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-}
-
-.skill:hover {
-  background: #e0e0e0;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
-}
-
-
-/* Mobile */
-@media (max-width: 768px) {
-  #skills {
-    padding: 60px 30px;
-  }
-
-  .hero-right img {
-    margin-right: 0;
-  }
-
-  .skills-intro {
-    font-size: 16px;
-  }
-
-  .skill {
-    font-size: 15px;
-    padding: 10px 18px;
-  }
-
-  .category-title {
-    font-size: 18px;
-  }
-  #about {
-    padding: 60px 30px;
-  }
-}
-
-/* Experience Section */
-#experience {
-  padding: 80px 60px;
-  background: #f7f7f7;
-  margin-top: 0px;
-}
-
-/* Projects Section */
-#projects {
-  padding: 80px 60px;
-  background: #fff;
-  margin-top: 0px;
-}
-
-.project-item {
-  margin-bottom: 50px;
-  padding: 20px 25px;
-  border: 1px solid #eee;
-  border-radius: 8px;
-  background: #fafafa;
-}
-
-.project-title {
-  font-size: 20px;
-  font-weight: bold;
-  color: #0f1414;
-  margin-bottom: 8px;
-}
-
-.project-tech {
-  font-size: 16px;
-  color: #616161;
-  margin-bottom: 10px;
-}
-
-.project-details {
-  font-size: 16px;
-  line-height: 1.6;
-  color: #555;
-}
-
-.experience-item {
-  margin-bottom: 50px;
-  position: relative;
-  padding-left: 40px;
-}
-
-.experience-item:before {
-  content: "";
-  position: absolute;
-  left: 15px;
-  top: 0;
-  width: 10px;
-  height: 10px;
-  background: #616161;
-  border-radius: 50%;
-}
-
-.experience-role {
-  font-size: 20px;
-  font-weight: bold;
-  color: #0f1414;
-  margin-bottom: 5px;
-}
-
-.experience-company {
-  font-size: 18px;
-  color: #616161;
-  margin-bottom: 3px;
-}
-
-.experience-period {
-  font-size: 16px;
-  color: #999;
-  margin-bottom: 10px;
-}
-
-.experience-details {
-  font-size: 16px;
-  line-height: 1.6;
-  color: #555;
-}
-
-/* Education Section */
-#education {
-  padding: 80px 60px;
-  background: #fff;
-  margin-top: 0px;
-}
-
-.education-item {
-  margin-bottom: 40px;
-  padding-bottom: 30px;
-  border-bottom: 1px solid #eee;
-}
-
-.education-item:last-child {
-  border-bottom: none;
-}
-
-.education-degree {
-  font-size: 22px;
-  font-weight: bold;
-  color: #0f1414;
-  margin-bottom: 5px;
-}
-
-.education-school {
-  font-size: 18px;
-  color: #616161;
-  margin-bottom: 5px;
-}
-
-.education-year {
-  font-size: 16px;
-  color: #999;
-  margin-bottom: 10px;
-}
-
-.education-details {
-  font-size: 16px;
-  line-height: 1.6;
-  color: #555;
-}
-
-/* Mobile */
-@media (max-width: 768px) {
-  #education {
-    padding: 60px 30px;
-  }
-
-  .education-degree {
-    font-size: 18px;
-  }
-
-  .education-school {
-    font-size: 16px;
-  }
-}
-
-
   </style>
 </head>
+
 <body>
 
-<header>
-  <div class="logo">Niroshini M</div>
-  <nav>
-    <a href="#" class="active">Home</a>
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#education">Education</a>
-    <a href="#experience">Experience</a>
-    <a href="#projects">Projects</a>
-  </nav>
-</header>
+  <header>
+    <div class="logo">Niroshini M</div>
+    <input type="checkbox" id="menu-toggle">
+    <label for="menu-toggle" class="menu-btn">☰</label>
+    <nav>
+      <a href="#" class="active">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+    </nav>
+  </header>
 
-<section class="hero">
-  <div class="hero-left">
-    <h1>Hi There,<br>I'm <span class="theme">Niroshini M</span></h1>
-    <p>Software Developer.</p>
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="container">
 
-    <a href="resume.pdf" download class="btn">Download Resume</a>
+      <div class="hero-left">
+        <h1>Hi There,<br>I'm <span class="theme">Niroshini M</span></h1>
+        <p class="typing">Aspiring Software Developer.</p>
 
-    <div class="social-icons">
-      <a href="https://www.linkedin.com/in/niroshini-murugadas-10062006m" target="_blank" data-tooltip="LinkedIn">
-        <img src="images/linkedin.png" alt="LinkedIn">
-      </a>
-      <a href="mailto:niroshinimurugadas@gmail.com" target="_blank" data-tooltip="Email">
-        <img src="images/gmail.png" alt="Gmail">
-      </a>
-      <a href="https://github.com/niroshinimurugadas" target="_blank" data-tooltip="GitHub">
-        <img src="images/github.png" alt="Github">
-      </a>
-      <a href="https://leetcode.com/u/9ojPG2Ku3h/" target="_blank" data-tooltip="LeetCode">
-        <img src="images/leetcode.png" alt="Leetcode">
-      </a>
-    </div>
-  </div>
+        <div class="cta-section">
+          <a href="resume.pdf" download class="btn">Download Resume</a>
 
-  <div class="hero-right">
-    <img src="images/profile1.jpeg" alt="Profile Image">
-  </div>
-</section>
-
-<!-- ABOUT SECTION -->
-<section id="about">
-  <div class="about-container">
-    <h2 class="section-title">About Me</h2>
-    <p class="about-text">
-      I am Niroshini M, an aspiring software developer with hands-on experience in Java programming.
-      I am building strong skills in problem-solving, web development, and data analysis.
-      I am eager to apply my knowledge in real-world projects, learn from industry professionals,
-      and grow into a skilled software engineer.
-    </p>
-    <div class="about-highlights">
-  <div>💻 Java & Object-Oriented Programming</div>
-  <div>🌐 Web Development (HTML, CSS)</div>
-  <div>📊 Data Analysis & Visualization</div>
-  <div>🚀 Continuous Learning & Projects</div>
-</div>
-
-  </div>
-</section>
-
-<section id="skills">
-  <h2 class="section-title">Skills</h2>
-  
-  <p class="skills-intro">
-    I have developed a strong foundation in programming and software development through hands-on experience and continuous learning. Here are the technologies and tools I work with:
-  </p>
-
-  <div class="skills-category">
-    <h3 class="category-title">Programming Languages</h3>
-    <div class="skills-container">
-      <div class="skill">Java</div>
-      <div class="skill">R</div>
-      <div class="skill">SQL</div>
-      <div class="skill">Python</div>
-    </div>
-  </div>
-
-  <div class="skills-category">
-    <h3 class="category-title">Web Development</h3>
-    <div class="skills-container">
-      <div class="skill">HTML5</div>
-      <div class="skill">CSS3</div>
-    </div>
-  </div>
-
-  <div class="skills-category">
-    <h3 class="category-title">Tools & Technologies</h3>
-    <div class="skills-container">
-      <div class="skill">Git & GitHub</div>
-      <div class="skill">Data Analysis</div>
-    </div>
-  </div>
-</section>
-
-<!-- EDUCATION SECTION -->
-<section id="education">
-  <h2 class="section-title">Education</h2>
-
-  <div class="education-item">
-    <div class="education-degree">Bachelor of Technology in Computer Science and Business Systems</div>
-    <div class="education-school">Panimalar Engineering College</div>
-    <div class="education-year">2023 - 2027 | CGPA: 8.7</div>
-  </div>
-
-  <div class="education-item">
-    <div class="education-degree">Higher Secondary Education (12th Grade)</div>
-    <div class="education-school">Sri Gnananandha Matriculation School</div>
-    <div class="education-year">2022 - 2023 | Percentage: 83.33%</div>
-    <div class="education-details">
-      Focused on Mathematics, Physics, Chemistry and Computer Science.
-    </div>
-  </div>
-</section>
-
-<!-- EXPERIENCE SECTION -->
-<section id="experience">
-  <h2 class="section-title">Experience</h2>
-  <div class="experience-item">
-    <div class="experience-role">Internship</div>
-    <div class="experience-company">vaultofcodes</div>
-    <div class="experience-period">June 2025 - June 2025</div>
-    <div class="experience-details">
-      <ul>
-        <li>Completed a 1‑month virtual internship focusing on Java programming.</li>
-        <li>Strengthened object‑oriented design, coding practices and small project delivery.</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- PROJECTS SECTION -->
-<section id="projects">
-  <h2 class="section-title">Projects</h2>
-
-  <a href="https://github.com/niroshinimurugadas/ecommerce-sales-analysis" target="_blank" style="text-decoration:none; color:inherit;">
-    <div class="project-item">
-      <div class="project-title">Ecommerce Sales Analysis Dashboard</div>
-      <div class="project-tech">Python • Pandas • Streamlit • Matplotlib • Seaborn</div>
-      <div class="project-details">
-        <ul>
-          <li>Built an interactive sales analysis dashboard using Python and Streamlit with a real‑world ecommerce dataset.</li>
-          <li>Performed data transformation and cleaning using Pandas, including reshaping monthly sales data for analysis.</li>
-          <li>Created clear data visualizations such as bar charts using Matplotlib and Seaborn to present business insights.</li>
-        </ul>
+          <div class="social-icons">
+            <a href="https://www.linkedin.com/in/niroshini-murugadas-10062006m" target="_blank">
+              <img src="images/linkedin.png" alt="LinkedIn">
+            </a>
+            <a href="mailto:niroshinimurugadas@gmail.com" target="_blank">
+              <img src="images/gmail.png" alt="Email">
+            </a>
+            <a href="https://github.com/niroshinimurugadas" target="_blank">
+              <img src="images/github.png" alt="GitHub">
+            </a>
+            <a href="https://leetcode.com/u/9ojPG2Ku3h/" target="_blank">
+              <img src="images/leetcode.png" alt="LeetCode">
+            </a>
+          </div>
+        </div>
       </div>
-    </div>
-  </a>
-</section>
 
-<footer style="text-align:center; padding:20px; color:#777;">
-  © 2026 Niroshini M | Aspiring Software Developer
-</footer>
+      <div class="hero-right">
+        <img src="images/profile1.jpeg" alt="Profile Image">
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ABOUT SECTION -->
+  <section id="about">
+    <div class="container">
+
+      <h2 class="section-title">About Me</h2>
+
+      <p class="about-text">
+        I am Niroshini M, an aspiring software developer with hands-on experience in Java programming.
+        I am building strong skills in problem-solving, web development, and data analysis.
+        I am eager to apply my knowledge in real-world projects, learn from industry professionals,
+        and grow into a skilled software engineer.
+      </p>
+
+      <div class="about-highlights">
+        <div>💻 Java & Object-Oriented Programming</div>
+        <div>🌐 Web Development (HTML, CSS)</div>
+        <div>📊 Data Analysis & Visualization</div>
+        <div>🚀 Continuous Learning & Projects</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SKILLS SECTION -->
+  <section id="skills">
+    <div class="container">
+
+      <h2 class="section-title">Skills</h2>
+
+      <p class="skills-intro">
+        I have developed a strong foundation in programming and software development through hands-on experience and
+        continuous learning.
+        Below is a graphical representation of my proficiency in each area.
+      </p>
+
+      <div class="skill-bar">
+        <div class="skill-top">
+          <span class="skill-name">Java</span>
+          <span class="skill-percent">80%</span>
+        </div>
+        <div class="bar">
+          <div class="fill" style="width:80%"></div>
+        </div>
+      </div>
+
+      <div class="skill-bar">
+        <div class="skill-top">
+          <span class="skill-name">R</span>
+          <span class="skill-percent">65%</span>
+        </div>
+        <div class="bar">
+          <div class="fill" style="width:65%"></div>
+        </div>
+      </div>
+
+      <div class="skill-bar">
+        <div class="skill-top">
+          <span class="skill-name">SQL</span>
+          <span class="skill-percent">65%</span>
+        </div>
+        <div class="bar">
+          <div class="fill" style="width:65%"></div>
+        </div>
+      </div>
+
+      <div class="skill-bar">
+        <div class="skill-top">
+          <span class="skill-name">Python</span>
+          <span class="skill-percent">60%</span>
+        </div>
+        <div class="bar">
+          <div class="fill" style="width:60%"></div>
+        </div>
+      </div>
+
+      <div class="skill-bar">
+        <div class="skill-top">
+          <span class="skill-name">HTML5, CSS3</span>
+          <span class="skill-percent">75%</span>
+        </div>
+        <div class="bar">
+          <div class="fill" style="width:75%"></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EDUCATION SECTION -->
+  <section id="education">
+    <div class="container">
+
+      <h2 class="section-title">Education</h2>
+      <p class="section-subtitle">More of my credentials</p>
+
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="timeline-left">
+            <h4>UG Degree</h4>
+            <span>September 2023 – April 2027</span>
+          </div>
+          <div class="timeline-center">
+            <span class="dot">🎓</span>
+          </div>
+          <div class="timeline-right">
+            <h4>Panimalar Engineering College, Anna University – Chennai.</h4>
+            <p>
+              Doing my UG Degree in Computer Science and Business System.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-left">
+            <h4>HSLC</h4>
+            <span>June 2022 – May 2023</span>
+          </div>
+          <div class="timeline-center">
+            <span class="dot">🎓</span>
+          </div>
+          <div class="timeline-right">
+            <h4>Sri Gnanananda Matric Higher Secondary School</h4>
+            <p>
+              Completed 12th with 83% in Board Examination.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-left">
+            <h4>SSLC</h4>
+            <span>June 2019 – May 2021</span>
+          </div>
+          <div class="timeline-center">
+            <span class="dot">🎓</span>
+          </div>
+          <div class="timeline-right">
+            <h4>Sri Gnanananda Matric Higher Secondary School</h4>
+            <p>
+              Completed 10th successfully.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EXPERIENCE SECTION -->
+  <section id="experience">
+    <div class="container">
+
+      <h2 class="section-title">Experience</h2>
+
+      <div class="experience-item">
+        <div class="experience-role">Internship</div>
+        <div class="experience-company">VaultofCodes</div>
+        <div class="experience-period">June 2025</div>
+        <div class="experience-details">
+          <ul>
+            <li>Completed a 1-month virtual internship focusing on Java programming.</li>
+            <li>Strengthened object-oriented design and coding practices.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROJECTS SECTION -->
+  <section id="projects">
+    <div class="container">
+
+      <h2 class="section-title">Projects</h2>
+
+      <a href="https://github.com/niroshinimurugadas/ecommerce-sales-analysis" target="_blank"
+        style="text-decoration:none; color:inherit;">
+        <div class="project-item">
+          <div class="project-title">Ecommerce Sales Analysis Dashboard</div>
+          <div class="project-tech">Python • Pandas • Streamlit • Matplotlib • Seaborn</div>
+          <div class="project-details">
+            <ul>
+              <li>Built an interactive dashboard using Python and Streamlit.</li>
+              <li>Performed data transformation and cleaning using Pandas.</li>
+              <li>Created visualizations to present business insights clearly.</li>
+            </ul>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <footer style="text-align:center; padding:20px; color:#777;">
+    © 2026 Niroshini M | Aspiring Software Developer
+  </footer>
 
 </body>
+
 </html>
